@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "next.config.ts", "use": "@vercel/next" }
+  ],
+  "env": {
+    "RESEND_API_KEY": "",
+    "TO_EMAIL": "",
+    "FROM_EMAIL": ""
+  }
+}
+

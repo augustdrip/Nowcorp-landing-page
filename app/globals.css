@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+/* Brand tokens (user-specified) */
+@theme {
+  --nc-primary: #ffffff;
+  --nc-accent: #115d5b; /* deep teal */
+  --nc-accent-soft: #cfeec2; /* softened light green for better contrast */
+  --nc-text: #0c2f2e; /* slightly lighter for readability */
+  --nc-link: #0f6a66;
+  --nc-muted: #f6faf8; /* softer muted bg */
+  --radius-lg: 12px;
+  --nc-cta-hover: #2bbf6b; /* lively green for hover */
+}
+
+html, body { height: 100%; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+.btn-primary { background: var(--nc-accent); color: #ffffff; }
+.btn-primary:hover { background: color-mix(in oklab, var(--nc-accent), black 8%); }
+.btn-secondary { border: 1px solid #d1d5db; background: #ffffff; color: var(--nc-text); }
+.chip { background: var(--nc-accent); color: #ffffff; }
+
+a { color: var(--nc-link); }
+
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Old theme tokens removed in favor of --nc-* */
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+.btn-primary:hover { background: color-mix(in oklab, var(--color-accent), black 8%); }
+.btn-secondary {
+  border: 1px solid #d1d5db; /* neutral-300 */
+  background: white;
+  color: #0a0a0a;
+}
+.chip {
+  background: var(--color-accent);
+  color: white;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Press marquee helpers */
+.mask-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.logo-marquee {
+  animation: marquee 24s linear infinite;
+  will-change: transform;
+}
+.logo-marquee:hover { animation-play-state: paused; }
+
+/* Hero floating keyframes */
+@keyframes float-slow {
+  0% { transform: translateY(0px) }
+  50% { transform: translateY(10px) }
+  100% { transform: translateY(0px) }
+}
+@keyframes float-slower {
+  0% { transform: translateY(0px) }
+  50% { transform: translateY(-8px) }
+  100% { transform: translateY(0px) }
+}
+.animate-float-slow { animation: float-slow 12s ease-in-out infinite; }
+.animate-float-slower { animation: float-slower 16s ease-in-out infinite; }
+
+/* Soft vertical fade mask utility */
+.fade-y {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+}
+
+/* Button outline/box enhancements */
+.btn-primary,
+.btn-secondary {
+  cursor: pointer;
+  border-width: 2px;
+  border-style: solid;
+  box-shadow: 0 1px 2px rgba(7, 44, 43, 0.10), 0 0 0 2px rgba(255,255,255,0.6) inset;
+  transition: background-color .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease, transform .15s ease;
+}
+.btn-primary {
+  border-color: #072c2b; /* high-contrast brand dark */
+}
+.btn-secondary {
+  border-color: #9ca3af; /* neutral-400 for stronger visibility */
+}
+.btn-primary:hover {
+  background: var(--nc-cta-hover);
+  border-color: color-mix(in oklab, var(--nc-cta-hover), black 20%);
+  box-shadow: 0 4px 12px rgba(43, 191, 107, 0.28), 0 0 0 2px rgba(255,255,255,0.85) inset;
+}
+.btn-secondary:hover {
+  background: color-mix(in oklab, var(--nc-cta-hover), white 88%);
+  border-color: color-mix(in oklab, var(--nc-cta-hover), #9ca3af 60%);
+  box-shadow: 0 3px 10px rgba(43, 191, 107, 0.14), 0 0 0 2px rgba(255,255,255,0.85) inset;
+}
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--nc-accent), white 30%);
+  outline-offset: 2px;
+}
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(0.5px);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.8) inset, 0 1px 1px rgba(0,0,0,0.08);
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Simple badge chip for text logos */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb; /* neutral-200 */
+  background: #ffffff;
+  color: var(--nc-text);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  white-space: nowrap;
+}
