@@ -16,8 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-white text-[color:var(--nc-text)]">
-        <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
-          <div className="mx-auto max-w-6xl px-6 lg:px-8 h-14 flex items-center justify-between">
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-neutral-200 bg-white">
+          <div className="mx-auto max-w-6xl px-6 lg:px-8 h-14 flex items-center justify-between text-[color:var(--nc-text)]">
             <Link href="/" className="flex items-center gap-2" aria-label="Now home">
               <Image
                 src="/gallery/Now_Primary-Lockup_2-1.svg"
@@ -31,11 +31,14 @@ export default function RootLayout({
             </Link>
             <nav className="hidden sm:flex items-center gap-4">
               <a href="#how" className="text-sm hover:underline">How it works</a>
-              <a href="#lead" className="text-sm hover:underline">Pricing</a>
+              <a href="#why" className="text-sm hover:underline">Why Now</a>
+              <a href="#faq" className="text-sm hover:underline">FAQ</a>
             </nav>
-            <a href="#apply" className="btn-secondary text-black rounded-md px-4 py-2 text-sm font-medium">Start</a>
+            <a href="#apply" className="rounded-md px-4 py-2 text-sm font-medium bg-[#c8ec9c] text-[color:var(--nc-text)] border border-neutral-300">Start</a>
           </div>
         </header>
+        {/* Spacer to offset the fixed header height */}
+        <div className="h-14" />
         {children}
       </body>
     </html>
